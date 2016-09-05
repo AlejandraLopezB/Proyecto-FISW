@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<style>
-body {
-    background-color: lightblue;
-}
-</style>
-<body >
+
+<head>
+<link rel="stylesheet" type="text/css" href="md-button.css">
+</head>>
+
+<body background="fondo.jpg" >
 <style>
  div {
-  border: 2px solid #CCC;
-  padding: 1em;
+  border: 2px solid #000;
+  padding: 2em;
   margin: 10em 0 3em 4em;
   width: 300px;
 }
@@ -19,8 +19,7 @@ body {
   <p>email: <input type="email" name="myAddress" ng-model="text">
     <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
   <p>pass: <input type="password" ng-model="password"></p>
-  <button ng-click="1">Registrarse</button>
-   <button ng-click="1">Iniciar sesion</button>
+  <md-button> Accept </md-button>
 </div>
 
 </body>
