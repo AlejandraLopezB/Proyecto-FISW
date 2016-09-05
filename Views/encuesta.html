@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<head>
+	<link rel="stylesheet" href="https://yui-s.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+<style>
+ div {
+  border: 2px solid #CCC;
+  padding: 1em;
+  margin: 10em 0 3em 4em;
+  width: 1000px;
+}
+</style>
+
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<label>Cuando aprendo...</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label> me gusta vivir sensaciones </label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>me gusta pensar sobre ideas</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>me gusta pensar estar haciendo cosas</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>me gusta pensar observar y escuchar</label><br><br>
+
+		<!-- Segunda Pregunta -->
+		<label>Aprendo mejor cuando...</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label> escucho y observo cuidadosamente </label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>confío en el pensamiento lógico</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>confío en mi intuición y sentimientos</label><br>
+
+		<select>
+		<option ng-repeat="x in names">{{x}}</option>
+		</select>
+		<label>trabajo duro para lograr hacer las cosas</label><br>
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+		    $scope.names = ["1", "2", "3", "4"];
+		});
+	</script>
+
+</body>
+</html>

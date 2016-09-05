@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<head>
-  <link rel="stylesheet" type="text/css" href="angular-material.css">
-</head>
-<style>
-body {
-    background-color: lightblue;
-}
-</style>
+
 <body >
 <style>
  div {
@@ -19,11 +12,12 @@ body {
 }
 </style>
 <div ng-app="" name="myForm">
-  <p>email: <input type="email" name="myAddress" ng-model="text">
+  <p>Nombre <input type="password" ng-model="password"></p>
+  <p>Apellido <input type="password" ng-model="password"></p>
+  <p>Email <input type="email" name="myAddress" ng-model="text">
     <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
-  <p>pass: <input type="password" ng-model="password"></p>
+  <p>Password <input type="password" ng-model="password"></p>
   <button ng-click="1">Registrarse</button>
-   <button ng-click="1">Iniciar sesion</button>
 </div>
 
 </body>
