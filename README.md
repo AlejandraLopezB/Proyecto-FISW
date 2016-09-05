@@ -1,2 +1,2 @@
 # Proyecto-FISW
-Proyecto de FISW - segundo semestre 2016
+Segundo semestre 2016
