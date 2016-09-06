@@ -6,15 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.14.0"
-  },
   "devDependencies": {
-		"express": "3.x",
-		"mysql":""
-	},
+    "express": "3.x",
+    "mysql": ""
+  },
   "description": "Servidor web de prueba"
 }
-
