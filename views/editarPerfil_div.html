@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>FISW</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../style/cover.css" rel="stylesheet">
+
+  </head>
+
+  <script src="app.js"></script>
+
+  <body>
+
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Plataforma de Aprendizaje</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="showPerfil_divergente">Perfil</a></li>
+                  <li class="active"><a href="#">EditarPerfil</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">Editar Perfil</h1>
+            <p class="lead">
+              Ingrese todos los campos
+            </p>
+            <div ng-app="myApp" ng-controller="myCtrl">
+              <form name="input" action="http://localhost:9000/editado" method="post">
+                <p class="lead">
+                  Nuevo Nombre <input ng-model="nombre" STYLE="color: #000000" type="text" name="nombre"></br>
+                  Nuevo Apellido <input ng-model="apellido" STYLE="color: #000000" type="text" name="apellido"></br>
+                  Nueva Pass <input ng-model="pass" type="password" STYLE="color: #000000" type="text" name="pass"></br>
+                  Mail <input STYLE="color: #000000" type="email" name="mail"></br>
+                  <input type="submit" value="Actualizar" STYLE="color: #000000">
+
+                  <!-- <p>Quieres ingresar: {{nombre}}, {{apellido}}</p> -->
+
+                </p>
+              </form>
+            </div>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>Plataforma de Aprendizaje, by fam</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+      
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.idFilter=function(db_data){
+      $scope.nombre = db_data.nombre;
+      return $scope.nombre;
+    }
+});
+</script>
+
+  </body>
+</html>

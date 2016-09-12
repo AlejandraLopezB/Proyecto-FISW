@@ -1,7 +1,7 @@
 {
   "name": "index.js",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -10,5 +10,10 @@
     "express": "3.x",
     "mysql": ""
   },
-  "description": "Servidor web de prueba"
+  "description": "Servidor web de prueba",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+  }
 }
