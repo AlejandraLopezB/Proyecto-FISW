@@ -9,17 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>Node.js Task List App</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../style/cover.css" rel="stylesheet">
-
-  </head>
-<style>
+    <link href="../public/stylesheets/cover.css" rel="stylesheet">  </head>
+  <style>
     div.encuesta {
     position: absolute;
     width: 700px;
@@ -32,7 +30,7 @@
     padding: 3em
 
     }
-     div.registro {
+    div.registro {
     position: absolute;
     width: 600px;
     height: 350px;
@@ -77,413 +75,200 @@
     padding: 3em
 
     }
-
-
+    #espacio1{
+    padding:0;
+    width: 45%;
+    float:left;
+    background:transparent;
+    height:auto;
+    border:solid black 2px;
+    margin-right:10px;
+    }
   </style>
   <body>
-
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
+        <div class="encabezado">
+          <h3 class="masthead-brand">Plataforma de Aprendizaje</h3>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/showSignInPage">SignIn</a></li>
+              <li class="active"><a href="#">SignUp</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="content">
+          <div id="espacio1" width="144px" height="192px" >
+            <form name="input" action="http://localhost:9000/insertuser"  method="post">
+              <p class="lead">
+                <h1>Sign Up</h1>
+                Nombre <input  STYLE="color: #000000" type="text" name="nombre" required></br>
+                Apellido <input  STYLE="color: #000000" type="text" name="apellido" required></br>
+                Email<input    STYLE="color: #000000" type="email" name="mail" required></br>
+                Pass <input type="password" STYLE="color: #000000" type="text" name="pass" required></br>
+                <input id="boton" disabled="true" type="submit"  value="Finalizar" STYLE="color: #000000"></input>
+                <input  id="perfil" type="hidden" name="perfil" value="" ></br>
+                (Para poder finalizar primero debe contestar la breve encuesta)
 
-        <div class="cover-container">
-
-          <div class="encabezado">
-              <h3 class="masthead-brand">Plataforma de Aprendizaje</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/showSignInPage">SignIn</a></li>
-                  <li class="active"><a href="#">SignUp</a></li>
-                </ul>
-              </nav>
-          </div>
-            <h1 class="singup" >Sign Up</h1>
-          <div class="inner cover">
-            <div class="registro">
-              <form name="input" action="http://localhost:9000/insertuser"  method="post">
-                <p class="lead">
-                  Nombre <input  STYLE="color: #000000" type="text" name="nombre" required></br>
-                  Apellido <input  STYLE="color: #000000" type="text" name="apellido" required></br>
-                  Email<input    STYLE="color: #000000" type="email" name="mail" required></br>
-                  Pass <input type="password" STYLE="color: #000000" type="text" name="pass" required></br>
-                </p>
-                <div class="encuesta"  ng-app="myApp" ng-controller="myCtrl" style="text-align:justify;">
-                  <h1>Instrucciones</h1>
-                  <label>Lea atentamente todas las indicaciones y responda acordemente, ya que con esta encuesta se obtiene un mejor resultado en el aprendizaje.</label>
-                  <label>Ordena las cuatro opciones de cada frase según pienses que se ajustan a tu manera de aprender algo nuevo. Numera con un 4 la terminación que mejor se ajuste a tu forma de aprender y con un 1 la que peor se ajuste. Asegúrate de asignar un número a todas las terminaciones de cada una de las 12 frases. </label><br><br>
-                  <label>1. Cuando aprendo...</label><br>
-
-                  <select ng-model = ec1 STYLE="color: #000000">
-                  <option  ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> me gusta vivir sensaciones </label><br>
-
-                  <select ng-model = or1 STYLE="color: #000000">
-                  <option ng-repeat="x in names" >{{x}}</option>
-                  </select>
-                  <label>me gusta pensar sobre ideas  </label><br>
-
-                  <select ng-model = ca1 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>me gusta pensar estar haciendo cosas </label><br>
-
-                  <select ng-model = ea1 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>me gusta pensar observar y escuchar</label><br><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec1,or1,ca1,ea1)">No repita los valores de las casillas</label>
-                  <br>
-                  <!-- Segunda Pregunta -->
-                  <label>2. Aprendo mejor cuando...</label><br>
-
-                  <select ng-model = ec2 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label > escucho y observo cuidadosamente </label><br>
+              </p>
+            <form>
+          </div>                
+          <div id="espacio1" width="144px" height="144px" ng-app="myApp" ng-controller="myCtrl">
+            <h1>Instrucciones</h1>
+            <label>Lea atentamente todas las indicaciones y responda acordemente, ya que con esta encuesta se obtiene un mejor resultado en el aprendizaje.</label>
+            <label>Ordena las cuatro opciones de cada frase según pienses que se ajustan a tu manera de aprender algo nuevo. Numera con un 4 la terminación que mejor se ajuste a tu forma de aprender y con un 1 la que peor se ajuste. Asegúrate de asignar un número a todas las terminaciones de cada una de las 12 frases. </label><br><br>
+           
 
 
-                  <select ng-model = or2 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>confío en el pensamiento lógico</label><br>
+            <div id="pregunta"></div>
+            <div id="respuestas" style="text-align:left;"></div>
+            <input type="button" value="siguiente" onclick="comprobar()">
+            <script>
+              var preguntas = [
+              "1. Cuando aprendo...",
+              "2. Aprendo mejor cuando...",
+              "3. Cuando estoy aprendiendo...",
+              "4. Yo aprendro...",
+              "5. Cuando aprendo...",
+              "6. Cuando estoy aprendiendo...",
+              "7. Yo aprendo mejor de...",
+              "8. Cuando aprendo...",
+              "9. Aprendo mejor cuando...",
+              "10. Cuando estoy aprendiendo...",
+              "11. Cuanndo aprendo...",
+              "12. Aprendo mejor cuando..."
 
-                  <select ng-model = ca2 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>confío en mi intuición y sentimientos</label><br>
+              ];
+              var respuestas = [
+              ["me gusta vivir sensaciones", "me gusta pensar sobre ideas", "me gusta pensar estar haciendo cosas", "me gusta pensar observar y escuchar"],
+              ["escucho y observo cuidadosamente", "confío en el pensamiento lógico", "confío en mi intuición y sentimientos", "trabajo duro para lograr hacer las cosas"],
+              ["Tiendo a usar el razonamieto", "Soy responsable con lo que hago", "Soy callado y reservado", "Tengo fuertes sensasiones y reacciones"],
+              ["Sintiendo", "Haciendo", "Observando", "Pensando"],
+              ["Estoy abierto a nuevas experiencias", "Observo todos los aspectos del asunto", "Me gusta analizar las cosas, descomponerlas en sus partes", "Me gusta probar e intentar hacer las cosas"],
+              ["Soy una persona observadora", "Soy una persona activa", "Soy una persona intuitiva", "Soy una persona logica"],
+              ["La observacion", "La relacion con otras personas", "Las teorias racionales", "La oportunidad de probar y practicar"],
+              ["Me gusta ver el resultado de mi trabajo", "Me gustan las ideas y las teorias", "Me tomo mi tiempo antes de actuar", "Me siento personalmente involucrado en las cosas"],
+              ["Confio en mis observaciones", "Confio en mis sentimientos", "Puedo probar por mi cuenta", "Confio en mis ideas"],
+              ["Soy una persona reservada", "Soy una persona receptiva", "Soy una personaa responsable", "Soy una persona racional"],
+              ["Me involucro", "Me gusta observar", "Evaluo las cosas", "Me gusta ser activo"],
+              ["Analizo ideas", "Soy receptivo y abierto", "Soy cuidadoso", "Soy practico"]
 
-                  <select ng-model = ea2 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>trabajo duro para lograr hacer las cosas</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec2,or2,ca2,ea2)">No repita los valores de las casillas</label>
-                  <br>
-                  <!-- tercera Pregunta -->
-                  <label>3. Cuando estoy aprendiendo...</label><br>
+              ];
+              var aux = 0;
+              var ec = 0;
+              var or = 0;
+              var ca = 0;
+              var ea = 0;
+              var perfil = "";
+              jugar();
+              var indicie_respuesta_correcta;
+              function jugar(){
+                var respuestas_posibles = respuestas[aux];
+                var posiciones = [0,1,2,3];
+                var ya_se_metio = false;
+                var txt_respuestas="";
+                txt_respuestas += '<select id="opciones1" name="opciones1">'+
+                                    '<option value="1">1</option>'+
+                                    '<option value="2">2</option>'+
+                                    '<option value="3">3</option>'+
+                                    '<option value="4">4</option>'+
+                                    '</select><label>'+respuestas[aux][0]+'</label><br>';
 
-                  <select ng-model = ec3 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Tiendo a usar el razonamieto </label><br>
+                txt_respuestas += '<select id="opciones2" name="opciones2">'+
+                                    '<option value="1">1</option>'+
+                                    '<option value="2">2</option>'+
+                                    '<option value="3">3</option>'+
+                                    '<option value="4">4</option>'+
+                                    '</select><label>'+respuestas[aux][1]+'</label><br>';
 
-                  <select ng-model = or3 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy responsable con lo que hago</label><br>
+                txt_respuestas += '<select id="opciones3" name="opciones3">'+
+                                    '<option value="1">1</option>'+
+                                    '<option value="2">2</option>'+
+                                    '<option value="3">3</option>'+
+                                    '<option value="4">4</option>'+
+                                    '</select><label>'+respuestas[aux][2]+'</label><br>';
 
-                  <select ng-model = ca3 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy callado y reservado</label><br>
+                txt_respuestas += '<select id="opciones4" name="opciones4">'+
+                                    '<option value="1">1</option>'+
+                                    '<option value="2">2</option>'+
+                                    '<option value="3">3</option>'+
+                                    '<option value="4">4</option>'+
+                                    '</select><label>'+respuestas[aux][3]+'</label><br>';
+                
+               
+                document.getElementById("respuestas").innerHTML = txt_respuestas;
+                document.getElementById("pregunta").innerHTML = preguntas[aux];
+                
 
-                  <select ng-model = ea3 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Tengo fuertes sensasiones y reacciones</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec3,or3,ca3,ea3)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>4. Yo aprendro...</label><br>
+              }
+              function comprobar(){
+                //var respuesta = $("input[type=radio]:checked").val();
+                var ecAux = parseInt(document.getElementById("opciones1").value);
+                var orAux = parseInt(document.getElementById("opciones2").value);
+                var caAux = parseInt(document.getElementById("opciones3").value);
+                var eaAux = parseInt(document.getElementById("opciones4").value);
+              
+                if(aux==12){
+                  tipo_usuario();
+                  document.input.perfil.value = perfil;
+                  document.getElementById("boton").disabled = false;
+                }
+                
+                
+                else if(ecAux==orAux||ecAux==caAux||ecAux==eaAux||orAux==caAux||orAux==eaAux||caAux==eaAux){
+                  alert("No se pueden repetir valores");
+                  jugar();
 
-                  <select ng-model = ec4 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Sintiendo </label><br>
-
-                  <select ng-model = or4 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Haciendo</label><br>
-
-                  <select ng-model = ca4 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Observando</label><br>
-
-                  <select ng-model = ea4 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Pensando</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec4,or4,ca4,ea4)">No repita los valores de las casillas</label>
-                  <br>  
-                  <label>5. Cuando aprendo...</label><br>
-
-                  <select ng-model = ec5 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Estoy abierto a nuevas experiencias </label><br>
-
-                  <select ng-model = or5 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Observo todos los aspectos del asunto</label><br>
-
-                  <select ng-model = ca5 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me gusta analizar las cosas, descomponerlas en sus partes</label><br>
-
-                  <select ng-model = ea5 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me gusta probar e intentar hacer las cosas</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec5,or5,ca5,ea5)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>6. Cuando estoy aprendiendo...</label><br>
-
-                  <select ng-model = ec6 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Soy una persona observadora </label><br>
-
-                  <select ng-model = or6 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una persona activa</label><br>
-
-                  <select ng-model = ca6 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una persona intuitiva</label><br>
-
-                  <select ng-model = ea6 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una persona logica</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec6,or6,ca6,ea6)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>7. Yo aprendo mejor de...</label><br>
-
-                  <select ng-model = ec7 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> La observacion </label><br>
-
-                  <select ng-model = or7 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>La relacion con otras personas</label><br>
-
-                  <select ng-model = ca7 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Las teorias racionales</label><br>
-
-                  <select ng-model = ea7 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>La oportunidad de probar y practicar</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec7,or7,ca7,ea7)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>8. Cuando aprendo...</label><br>
-
-                  <select ng-model = ec8 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Me gusta ver el resultado de mi trabajo </label><br>
-
-                  <select ng-model = or8 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me gustan las ideas y las teorias</label><br>
-
-                  <select ng-model = ca8 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me tomo mi tiempo antes de actuar</label><br>
-
-                  <select ng-model = ea8 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me siento personalmente involucrado en las cosas</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec8,or8,ca8,ea8)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>9. Aprendo mejor cuando...</label><br>
-
-                  <select ng-model = ec9 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Confio en mis observaciones </label><br>
-
-                  <select ng-model = or9 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Confio en mis sentimientos</label><br>
-
-                  <select ng-model = ca9 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Puedo probar por mi cuenta</label><br>
-
-                  <select ng-model = ea9 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Confio en mis ideas</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec9,or9,ca9,ea9)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>10. Cuando estoy aprendiendo...</label><br>
-
-                  <select ng-model = ec10 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Soy una persona reservada</label><br>
-
-                  <select ng-model = or10 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una persona receptiva</label><br>
-
-                  <select ng-model = ca10 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una personaa responsable</label><br>
-
-                  <select ng-model = ea10 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy una persona racional</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec10,or10,ca10,ea10)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>11. Cuanndo aprendo...</label><br>
-
-                  <select ng-model = ec11 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Me involucro </label><br>
-
-                  <select ng-model = or11 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me gusta observar</label><br>
-
-                  <select ng-model = ca11 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Evaluo las cosas</label><br>
-
-                  <select ng-model = ea11 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Me gusta ser activo</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec11,or11,ca11,ea11)">No repita los valores de las casillas</label>
-                  <br>
-                  <label>12. Aprendo mejor cuando...</label><br>
-
-                  <select ng-model = ec12 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label> Analizo ideas </label><br>
-
-                  <select ng-model = or12 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy receptivo y abierto</label><br>
-
-                  <select ng-model = ca12 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy cuidadoso</label><br>
-
-                  <select ng-model = ea12 STYLE="color: #000000">
-                  <option ng-repeat="x in names">{{x}}</option>
-                  </select>
-                  <label>Soy practico</label><br>
-                  <label ng-style="myObj" ng-show= "valores_correctos(ec12,or12,ca12,ea12)">No repita los valores de las casillas</label>
-                  <br>
-                  ( valores de cada alternatica)<br>
-                  <label ng-value= "ec = ec1*1 + ec2*1 + ec3*1 + ec4*1 + ec5*1 + ec6*1 + ec7*1 + ec8*1 + ec9*1 + ec10*1 + ec11*1 + ec12*1"> ec={{ec}}</label><br>
-                  <label ng-value= "or = or1*1 + or2*1 + or3*1 + or4*1 + or5*1 + or6*1 + or7*1 + or8*1 + or9*1 + or10*1 + or11*1 + or12*1">or={{or}}</label><br>
-                  <label ng-value= "ca = ca1*1 + ca2*1 + ca3*1 + ca4*1 + ca5*1 + ca6*1 + ca7*1 + ca8*1 + ca9*1 + ca10*1 + ca11*1 + ca12*1">ca={{ca}}</label><br>
-                  <label ng-value= "ea = ea1*1 + ea2*1 + ea3*1 + ea4*1 + ea5*1 + ea6*1 + ea7*1 + ea8*1 + ea9*1 + ea10*1 + ea11*1 + ea12*1">ea={{ea}}</label><br>
-                  <br>
-                  <input  type="hidden" ng-value= "tipo_usuario(ec,or,ca,ea)" STYLE="color: #000000" name="perfil"></br>
-                  (esto es solo para revisar mas rapido el tipo usuario)<br>
-                  <p>Eres de tipo :{{ tipo_usuario(ec,or,ca,ea) }} </p><br>
-
-
+                }
+                else{
+                  aux+=1;
+                  ec+=ecAux;
+                  or+=orAux;
+                  ca+=caAux;
+                  ea+=eaAux;
+                  jugar();
+                }   
+              }
+              function tipo_usuario() {
+                var caec= (ca-ec);
+                var eaor= (ea-or);
+                if (caec < 0  && eaor < 0){
+                  perfil = "convergente";
                   
-                  <input ng-disabled="(v(ec12,or12,ca12,ea12) || v(ec11,or11,ca11,ea11) || v(ec10,or10,ca10,ea10) || v(ec9,or9,ca9,ea9) || v(ec8,or8,ca8,ea8) || v(ec7,or7,ca7,ea7) || v(ec6,or6,ca6,ea6) || v(ec5,or5,ca5,ea5) || v(ec4,or4,ca4,ea4) || v(ec3,or3,ca3,ea3) || v(ec2,or2,ca2,ea2) || v(ec1,or1,ca1,ea1))"   type="submit"  value="Finalizar" STYLE="color: #000000"></input>
-                  <br><br><br>
-                </div>
-              </form>
-            </div>
-          </div>
+                }
+                else if(caec < 0 && eaor > 0){
+                  perfil = "asimilador";
+                  
+                }
+                else if(caec > 0 && eaor > 0){
+                  perfil = "adaptador";
+                  
+                }
+                else if(caec > 0 && eaor < 0){
+                  perfil = "divergente";
+                  
+                }
+                else{
+                  perfil = "nada";
+                  
+                }
+              }
 
+            </script>
+
+            <br>
+            
+            <br><br><br>
+          </div>
+        </div>
           <div class="mastfoot">
             <div class="inner">
               <p>Plataforma de Aprendizaje, by fam</p>
             </div>
           </div>
-
         </div>
-
       </div>
-
-    </div>
-    
-    <script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope) {
-        $scope.names = [1, 2, 3, 4];
-        $scope.tipo = "nada";
-        $scope.quotes = ["convergente","asimilador","adaptador","divergente"];
-        $scope.randompredeterminado = $scope.quotes[Math.floor(Math.random() * $scope.quotes.length)];
-      $scope.myObj = {
-          "color" : "white",
-          "background-color" : "red",
-          "font-size" : "14px",
-          "padding" : "10px"
-        }
-        $scope.tipo_usuario = function(valor1,valor2,valor3,valor4) {
-          $scope.caec= (valor3-valor1);
-          $scope.eaor= (valor4-valor2);
-        if ($scope.caec < 0  && $scope.eaor < 0){
-          $scope.tipo = "convergente";
-          return $scope.tipo
-        }
-        else if($scope.caec < 0 && $scope.eaor > 0){
-          $scope.tipo = "asimilador";
-          return $scope.tipo
-        }
-        else if($scope.caec > 0 && $scope.eaor > 0){
-          $scope.tipo = "adaptador";
-          return $scope.tipo
-        }
-        else if($scope.caec > 0 && $scope.eaor < 0){
-          $scope.tipo = "divergente";
-          return $scope.tipo
-        }
-        else{
-          $scope.tipo = "nada";
-          return $scope.tipo
-        }
-
-        };
-      $scope.valores_correctos = function(valor1,valor2,valor3,valor4) {
-          
-
-          if((valor1 != valor2 && valor1 != valor3 && valor1 != valor4 && valor2 != valor3 && valor2 != valor4 && valor3 != valor4) && (valor1 > 0 && valor2 > 0 && valor3 > 0 && valor4 > 0)){
-            return false;
-          }
-          else if (valor1 > 0 && valor2 > 0 && valor3 > 0 && valor4 > 0) {
-            return true;
-          }
-          else{
-            return false
-          }
-        };
-      $scope.v = function(valor1,valor2,valor3,valor4) {
-          
-
-          if((valor1 != valor2 && valor1 != valor3 && valor1 != valor4 && valor2 != valor3 && valor2 != valor4 && valor3 != valor4) && (valor1 > 0 && valor2 > 0 && valor3 > 0 && valor4 > 0)){
-            return false;
-          }
-          else{
-            return true;
-          }
-        };
-    });
-  </script>
+      
   </body>
 </html>

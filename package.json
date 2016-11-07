@@ -1,11 +1,14 @@
 {
-  "name": "index.js",
+  "name": "FISW",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
+  "author": "fam",
+  "license": "",
+  "repository": "none",
   "devDependencies": {
     "express": "3.x",
     "mysql": ""
@@ -15,5 +18,10 @@
     "angular": "^1.5.8",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "consolidate": "^0.14.1",
+    "jquery": "^3.1.1",
+    "multer": "^1.2.0",
+    "sequelize": "^3.24.8",
+    "sequelize-cli": "^2.4.0"
   }
 }

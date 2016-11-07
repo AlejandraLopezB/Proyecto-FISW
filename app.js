@@ -1,11 +1,17 @@
 //Importar
-var express = require('express');
-var path = require("path");
+var express =require("express"),
+	app=express(),
+	server=require('http').createServer(app),
+	cons= require('consolidate'),
+	path = require("path");
+var multer = require('multer');
 var bodyParser = require('body-parser');
-const fs = require('fs'); //para el archivo json
-
+var fs = require('fs'); //para el archivo json
 //Instanciar
-var app = express();
+	app.use(express.static('./public'));
+	//funcion importante para subir archivos
+	app.use(bodyParser());
+	app.use(bodyParser({uploadDir:'./uploads'}));
 
 //ruteo
 // app.get('/', function(req, res){
@@ -17,9 +23,10 @@ var app = express();
 // app.use(express.static('public'));
 
 
+
 app.use('/node_modules',  express.static(__dirname + '/node_modules'));
 
-app.use('/style',  express.static(__dirname + '/style'));
+app.use('/public/stylesheets',  express.static(__dirname + '/public/stylesheets'));
 
 //home.html
 app.get('/',function(req,res){
@@ -89,11 +96,12 @@ app.get('/perfilAdmin',function(req,res){
 app.get('/editarUsuarios',function(req,res){
   res.sendFile('editarUsuarios.html',{'root':__dirname + '/views'})
 })
+app.get('/subirarchivos',function(req,res){
+  res.sendFile('subirarchivos.html',{'root':__dirname + '/views'})
+})
 
 //app.use(app.router);
-app.use(express.static(path.join(__dirname, "Proyecto-FISW")));
 
-app.use(bodyParser());
 
 // database connection
 var mysql = require('mysql');
@@ -108,18 +116,19 @@ connection.connect();
 
 //Insertar nuevo usuario
 app.post('/insertuser', function (req, res){
+  console.log("POST: ");
   id_mail = req.body.mail;
   nombre = req.body.nombre;
   apellido = req.body.apellido;
   pass = req.body.pass;
   perfil = req.body.perfil;
   //console.log('insert into usuarios ( username , password ) values (' + "'" + nombre +"'" +',' + "'"+ pass +"'" +');');
-  connection.query('insert into USUARIOS ( id_mail, nombre, apellido,  pass, perfil) values (' + "'" + id_mail +"'" +',' + "'" + nombre +"'" +',' + "'"+ apellido +"'" + ',' + "'"+ pass +"'" +',' + "'"+ perfil +"'" +');', function (error, rows, fields) { 
+  connection.query('insert into USUARIOS ( id_mail, nombre, apellido,  pass, perfil ) values (' + "'" + id_mail +"'" +',' + "'" + nombre +"'" +',' + "'"+ apellido +"'" + ',' + "'"+ pass +"'" +','+ "'" + perfil + "'" +');', function (error, rows, fields) { 
 		console.log(error);
     res.writeHead(200, {'Content-Type': 'text/plain'});
 		res.end( 'record inserted...');
 	}); 
-	//connection.end();  
+	connection.end();  
 });
 
 //Login
@@ -198,7 +207,7 @@ app.post('/editarUsuarios', function (req, res){
 		}
 	 	else
 	 	{
-		    fs.writeFile(__dirname + '/views/usuarios.json', JSON.stringify(rows), function(err){
+		    fs.writeFile(__dirname + 'C:/Users/franc/Desktop/Proyecto-FISW-master/views/usuarios.json', JSON.stringify(rows), function(err){
   				if (err) return console.log(err.message);
   				else{
   					console.log('Archivo escrito \\o/');
@@ -212,6 +221,28 @@ app.post('/editarUsuarios', function (req, res){
       //connection.end();
 });
 
+app.post('/subir',multer({ dest: './public/uploads/'}).single('miarchivo'),function (req,res) {
+
+		var tmp_path=req.file.path;//ruta del archivo
+		var tipo=req.file.mimetype;//tipo del archivo
+		
+		if(1==1){
+			//Si es de tipo png jpg o jpeg
+			var nombrearchivo=req.file.originalname;//nombre del archivo mas variable aleatoria
+
+			var target_path='./public/uploads/'+nombrearchivo;// hacia donde subiremos nuestro archivo dentro de nuestro servidor
+			fs.rename(tmp_path,target_path,function (err) {//Escribimos el archivo
+				fs.unlink(tmp_path,function (err) {//borramos el archivo tmp
+					//damos una respuesta al cliente
+					res.sendFile(__dirname + '/views/subirarchivos.html');
+				});
+			});
+
+		}else{
+			res.send('Tipo de archivo no soportado ');
+		}
+
+	});
 //escuchar
 app.listen(9000);
  console.log("Servidor corriendo en http://localhost:9000/");

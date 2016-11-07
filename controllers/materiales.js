@@ -1,44 +1,44 @@
-var Usuario = require('../models/').Usuario;
+var Material = require('../models/').Material;
 
 module.exports = {
-	//Muestra todos los usuarios
+	//Muestra todos los materiales
 	index(req, res) {
-		Usuario.findAll()
-			.then(function (usuarios) {
-				res.status(200).json(usuarios);
+		Material.findAll()
+			.then(function (materiales) {
+				res.status(200).json(materiales);
 			})
 			.catch(function (error) {
 				res.status(500).json(error);
 			});
 	},
 
-	//Devuelve un usuario segun su id_mail
+	//Devuelve un material segun su id
 	show(req, res) {
-		Usuario.findById(req.params.id_mail)
-		.then(function (usuario) {
-			res.status(200).json(usuario);
+		Material.findById(req.params.id_material)
+		.then(function (material) {
+			res.status(200).json(material);
 		})
 		.catch(function (error){
 			res.status(500).json(error);
 		});
 	},
 
-	//Crea un nuevo usuario
+	//Crea un nuevo material
 	create(req, res) {
-		Usuario.create(req.body)
-		.then(function (nuevoUsuario) {
-			res.status(200).json(nuevoUsuario);
+		Material.create(req.body)
+		.then(function (nuevoMaterial) {
+			res.status(200).json(nuevoMaterial);
 		})
 		.catch(function (error){
 			res.status(500).json(error);
 		});
 	},
 
-	//Edita un usuario existente
+	//Edita un material existente
 	update(req, res) {
-		Usuario.update(req.body, {
+		Material.update(req.body, {
 			where: {
-				id_mail: req.params.id_mail
+				id_material: req.params.id_material
 			}
 		})
 		.then(function (updatedRecords) {
@@ -49,11 +49,11 @@ module.exports = {
 		});
 	},
 
-	//Elimina un usuario segun su id_mail
+	//Elimina un material segun su id_material
 	delete(req, res) {
-		Usuario.destroy({
+		Material.destroy({
 			where: {
-				id_mail: req.params.id_mail
+				id_material: req.params.id_material
 			}
 		})
 		.then(function (deletedRecords) {
