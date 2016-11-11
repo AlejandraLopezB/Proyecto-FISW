@@ -8,8 +8,15 @@ var usuarios = require('./controllers/users');
 var materiales = require('./controllers/materiales');
 
 app.use("/node_modules", express.static('node_modules'));
+app.use("/routes", express.static('routes'));
+app.use("/controllers", express.static('controllers'));
+
 //app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/public'));
+
+app.get('/',function(req,res){
+    res.sendFile('index.html',{'root': __dirname + '/views'});
+})
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

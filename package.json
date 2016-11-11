@@ -10,7 +10,7 @@
   "license": "",
   "repository": "none",
   "devDependencies": {
-    "express": "3.x",
+    "express": "4.x",
     "mysql": ""
   },
   "description": "Servidor web de prueba",
