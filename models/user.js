@@ -29,5 +29,6 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 	    tableName: 'USUARIOS'
 	});
+	//poner relaciones??
   return Usuario;
 };

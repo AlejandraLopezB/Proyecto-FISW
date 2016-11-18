@@ -14,9 +14,7 @@ app.use("/controllers", express.static('controllers'));
 //app.use(express.static(__dirname + '/views'));
 //app.use(express.static(__dirname + '/public'));
 
-app.get('/',function(req,res){
-    res.sendFile('index.html',{'root': __dirname + '/views'});
-})
+app.use(express.static(path.join(__dirname, 'views')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -2,19 +2,18 @@ var miAppAngular = angular.module ('navegacion', ['ngRoute']);
 
 miAppAngular.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
-		templateUrl: '../views/plantillas/inicio.html',
+		templateUrl: 'plantillas/inicio.html',
 		controller: 'inicio'
 	})
-	.when('/galeria', {
-		templateUrl: '../views/plantillas/galeria.html',
-		controller: 'inicio'
+	.when('/registrar', {
+		templateUrl: 'plantillas/registrar.html',
+		controller: 'registrarOK'
 	})
-	.when('/mapa', {
-		templateUrl: '../views/plantillas/mapa.html',
-		controller: 'inicio'
+	.when('/iniciarSesion', {
+		templateUrl: 'plantillas/iniciarSesion.html',
+		controller: 'iniciarSesion'
 	})
-	.when('/contacto', {
-		templateUrl: '../views/plantillas/contacto.html',
-		controller: 'inicio'
-	})
+	.otherwise({
+        redirectTo: '/'
+      });
 }])
