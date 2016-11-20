@@ -1,0 +1,40 @@
+<div class="container" ng-controller="editarOk">
+
+<h1>Editar Perfil</h1>
+
+	<div class="col-sm-10">
+
+		<form id="formulario" name="formulario" ng-submit="editarPerfil()" novalidate ng-hide="editarOk">
+
+			<label>Nombre</label>
+			<input type="text" name="nombre" class="form-control" ng-model="alumno.nombre" required/><br>
+
+			<!-- <div ng-show="!nombre && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+			</div> -->
+
+			<label>Apellido</label>
+			<input type="text" name="apellido" class="form-control" ng-model="alumno.apellido" required/><br>
+
+			<!-- <div ng-show="!apellido && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+			</div> -->
+
+			<label>Contraseña</label>
+			<input type="password" name="pass" class="form-control" ng-model="alumno.pass" required/><br>
+
+			<!-- <div ng-show="!pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+			</div> -->
+
+			<input class="btn" type="submit" value="Guardar cambios"/>
+
+		</form>
+
+		<div ng-show="editarOk" class="well">
+
+	        <h3>¡Perfil editado correctamente!</h3>
+	        <input class="btn" type="submit" value="Volver" ng-click="volver()"/>
+
+		</div>
+		
+
+	</div>
+</div>

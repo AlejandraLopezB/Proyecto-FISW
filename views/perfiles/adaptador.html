@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" type="text/css"  href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+        
+    <script src="../../node_modules/angular/angular.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script type="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    
+    <script src="../../routes/adaptador.js"> </script>
+    
+    <script src="../../controllers/navegacionControl.js"></script>
+    <script src="../../controllers/editarPerfil.js"></script>
+
+
+</head>
+
+<body ng-app='navegacion'>
+
+    <header class="navbar navbar-default" ng-controller="navegacionControl">
+
+
+        <div class="container">
+
+
+            <nav role="navigation" id="navegacion" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{active:isActive('/')}">
+                        <a href="#/">Inicio</a>
+                    </li>
+                    <li ng-class="{active:isActive('/editarPerfil')}">
+                        <a href="#/editarPerfil">Editar Perfil</a>
+                    </li>
+                    <li ng-class="{active:isActive('/cerrarSesion')}">
+                        <a href="/">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+   <!--  <p ng-controller="prueba">
+        {{alumno.id_mail}}
+    </p> -->
+    <div class="container" ng-view>
+        
+    </div>
+<!-- <script>
+    miAppAngular.controller('prueba', function($scope) {
+        accessData = window.localStorage['Sesion'];
+        console.log(accessData);
+        $scope.alumno = angular.fromJson(accessData);
+    })
+</script> -->
+</body>

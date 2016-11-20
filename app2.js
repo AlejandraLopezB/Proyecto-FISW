@@ -7,12 +7,10 @@ var app = express();
 var usuarios = require('./controllers/users');
 var materiales = require('./controllers/materiales');
 
+app.use("/public", express.static('public'));
 app.use("/node_modules", express.static('node_modules'));
 app.use("/routes", express.static('routes'));
 app.use("/controllers", express.static('controllers'));
-
-//app.use(express.static(__dirname + '/views'));
-//app.use(express.static(__dirname + '/public'));
 
 app.use(express.static(path.join(__dirname, 'views')));
 
@@ -20,9 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/users', usuarios.index);
-app.get('/users/:id', usuarios.show);
+app.get('/users/:id_mail', usuarios.show);
 app.post('/users', usuarios.create);
-app.put('/users', usuarios.update);
+app.post('/users/:id_mail', usuarios.update);
 app.delete('/users', usuarios.delete);
 
 app.get('/materiales', materiales.index);

@@ -11,9 +11,18 @@ miAppAngular.config(['$routeProvider', function($routeProvider){
 	})
 	.when('/iniciarSesion', {
 		templateUrl: 'plantillas/iniciarSesion.html',
-		controller: 'iniciarSesion'
+		controller: 'ingresarOK'
+	})
+	.when('/404', {
+		templateUrl: 'plantillas/404.html'
 	})
 	.otherwise({
-        redirectTo: '/'
-      });
+        redirectTo: '/404'
+    });
 }])
+
+miAppAngular.controller('mainCtrl', function($scope) {
+    accessData = window.localStorage['Sesion'];
+    //console.log(alumno);
+    $scope.alumno = angular.fromJson(accessData);
+})

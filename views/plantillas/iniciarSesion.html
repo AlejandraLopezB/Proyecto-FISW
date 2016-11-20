@@ -1,32 +1,26 @@
-<div class="container" ng-controller="registrarOK">
+<div class="container" ng-controller="ingresarOK">
 
 <h1>Iniciar Sesión</h1>
 
 	<div class="col-sm-10">
 
-		<form id="formulario" name="formulario" ng-submit="registrarUsuario()" novalidate ng-hide="registrarOK">
+		<form id="formulario" name="formulario" ng-submit="ingresarUsuario()" novalidate ng-hide="ingresarOK">
 
 			<label>Mail</label>
-			<input type="text" name="nombre" class="form-control" ng-model="usuario.nombre" required/><br>
+			<input type="text" name="id_mail" class="form-control" ng-model="id_mail" required/><br>
 
-			<div ng-show="!usuario.nombre &&formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+			<div ng-show="!id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
 			</div>
 
-			<label>Constraseña</label>
-			<input type="text" name="apellido" class="form-control" ng-model="usuario.apellido" required/><br>
+			<label>Contraseña</label>
+			<input type="password" name="pass" class="form-control" ng-model="pass" required/><br>
 
-			<div ng-show="!usuario.pass &&formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+			<div ng-show="!pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
 			</div>
 
-			<input class="btn" type="submit" value="Enviar"/>
+			<input class="btn" type="submit" value="Enviar" />
 
 		</form>
-
-		<!-- <div ng-show="registrarOK" class="well">
-
-	        <h3>¡ Usuario {{usuario.nombre}} ingresado correctamente !</h3>
-
-		</div> -->
 
 	</div>
 </div>
