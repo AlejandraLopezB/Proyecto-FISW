@@ -45,7 +45,7 @@ miAppAngular.controller('editarOk', function($scope, $http){
 			pass = $scope.pass
 
 		var perfil = {
-			// id_mail: $scope.alumno.id_mail,
+			'id_mail': $scope.alumno.id_mail,
 			'nombre': nombre,
 			'apellido': apellido,
 			'pass': pass

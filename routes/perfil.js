@@ -11,6 +11,10 @@ miAppAngular.config(['$routeProvider', function($routeProvider){
 		templateUrl: '/perfiles/plantillas/editarPerfil.html',
 		controller: 'editarOk'
 	})
+	.when('/listaUsuarios', {
+		templateUrl: '/perfiles/plantillas/listaUsuarios.html',
+		controller: 'mostrarUsuarios'
+	})
 	.otherwise({
         redirectTo: '/404'
     });
