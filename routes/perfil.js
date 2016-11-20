@@ -2,7 +2,7 @@ var miAppAngular = angular.module ('navegacion', ['ngRoute']);
 
 miAppAngular.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
-		templateUrl: '/perfiles/plantillas/adaptador.html'
+		templateUrl: '/perfiles/plantillas/inicio.html'
 	})
 	.when('/404', {
 		templateUrl: 'plantillas/404.html'

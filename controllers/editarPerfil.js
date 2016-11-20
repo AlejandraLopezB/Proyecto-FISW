@@ -52,6 +52,8 @@ miAppAngular.controller('editarOk', function($scope, $http){
 			
 		};
 
+		window.localStorage['Sesion'] = angular.toJson(perfil);
+
 		//perfil = JSON.parse('{"' + decodeURI(JSON.stringify(perfil)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"').replace(/%40/g, '@') + '"}')
 		
 		//para transformarlo a JSON
@@ -81,9 +83,9 @@ miAppAngular.controller('editarOk', function($scope, $http){
 			    console.log('an error occurred', error.data);
 			});
 
-		$scope.volver = function() {
-			$scope.editarOk = false;
-		}
+		// $scope.volver = function() {
+		// 	$scope.editarOk = false;
+		// }
 	}
 
 })
