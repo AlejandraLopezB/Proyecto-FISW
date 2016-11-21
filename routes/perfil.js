@@ -19,6 +19,12 @@ miAppAngular.config(['$routeProvider', function($routeProvider){
 		templateUrl: '/plantillas/ingresarUsuario.html',
 		controller: 'ingresarUsuarioOk'
 	})
+	.when('/subirMateria', {
+		templateUrl: '/plantillas/subirMateria.html'
+	})
+	.when('/verMateria', {
+		templateUrl: '/plantillas/verMateria.html'
+	})
 	.otherwise({
         redirectTo: '/404'
     });
