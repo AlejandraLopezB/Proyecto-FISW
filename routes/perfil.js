@@ -2,18 +2,22 @@ var miAppAngular = angular.module ('navegacion', ['ngRoute']);
 
 miAppAngular.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
-		templateUrl: '/perfiles/plantillas/inicio.html'
+		templateUrl: '/plantillas/inicio.html'
 	})
 	.when('/404', {
-		templateUrl: 'plantillas/404.html'
+		templateUrl: '/plantillas/404.html'
 	})
 	.when('/editarPerfil', {
-		templateUrl: '/perfiles/plantillas/editarPerfil.html',
+		templateUrl: '/plantillas/editarPerfil.html',
 		controller: 'editarOk'
 	})
 	.when('/listaUsuarios', {
-		templateUrl: '/perfiles/plantillas/listaUsuarios.html',
+		templateUrl: '/plantillas/listaUsuarios.html',
 		controller: 'mostrarUsuarios'
+	})
+	.when('/ingresarUsuario', {
+		templateUrl: '/plantillas/ingresarUsuario.html',
+		controller: 'ingresarUsuarioOk'
 	})
 	.otherwise({
         redirectTo: '/404'

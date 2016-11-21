@@ -34,9 +34,9 @@ miAppAngular.controller('ingresarOK', function($scope, $window, login, $location
 					//para sacar los datos
 					// accessData = window.localStorage['Sesion'];
 					if(data.tipo == '0')
-						$window.location.href = 'admin.html';
+						$window.location.href = '/perfiles/admin.html';
 					if(data.tipo == '1')
-						$window.location.href = 'profesor.html';
+						$window.location.href = '/perfiles/profesor.html';
 					if(data.tipo == '2'){
 						if(data.perfil == 'adaptador')
 							$window.location.href = '/perfiles/adaptador.html';

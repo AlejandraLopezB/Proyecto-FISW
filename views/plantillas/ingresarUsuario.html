@@ -1,0 +1,74 @@
+<div class="content" ng-controller="ingresarUsuarioOk">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Ingresar Profesor</h4>
+                    </div>
+                    <div class="content">
+                        <form id="formulario" name="formulario" ng-submit="ingresarUsuario()" novalidate ng-hide="ingresarUsuarioOk">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" ng-model="usuario.nombre" required>
+                                        <div ng-show="!usuario.nombre && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Apellido</label>
+                                        <input type="text" class="form-control" name="apellido" ng-model="usuario.apellido" required>
+                                        <div ng-show="!usuario.apellido && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Mail</label>
+                                        <input type="text" class="form-control" name="nombre" ng-model="usuario.id_mail" required>
+                                        <div ng-show="!usuario.id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Contraseña</label>
+                                        <input type="password" class="form-control" name="pass" ng-model="usuario.pass" required>
+                                        <div ng-show="!usuario.pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <button type="submit" class="btn btn-info btn-fill">Ingresar Usuario</button>
+                            <div class="clearfix"></div>
+                        </form>
+
+                        <div ng-show="ingresarUsuarioOk"">
+
+					        <h3>Profesor ingresado correctamente!</h3><br>
+					        <button type="submit" class="btn btn-info btn-fill" onClick="history.go(0)">Volver</button>
+                            <div class="clearfix"></div>
+
+						</div>
+
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
