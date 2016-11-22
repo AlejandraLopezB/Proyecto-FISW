@@ -1,1 +1,115 @@
-<p>subir materia</p>
+<div class="content" ng-controller="subirMateria">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Subir Archivo</h4>
+                    </div>
+                    <div class="content">
+                    	<label>Perfil</label>
+						<select class="form-control" ng-model="perfilElegido">
+							<option ng-repeat="x in perfil">{{x}}</option>
+						</select><br>
+						<label>Tema</label>
+						<select class="form-control" ng-model="temaElegido"	>
+							<option ng-repeat="x in tema">{{x}}</option>
+						</select><br>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirCT1" ng-show= "perfilElegido=='Convergente' && temaElegido=='Tema 1'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirCT2" ng-show= "perfilElegido=='Convergente' && temaElegido=='Tema 2'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirCT3" ng-show= "perfilElegido=='Convergente' && temaElegido=='Tema 3'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirCT4" ng-show= "perfilElegido=='Convergente' && temaElegido=='Tema 4'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirDT1" ng-show= "perfilElegido=='Divergente' && temaElegido=='Tema 1'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirDT2" ng-show= "perfilElegido=='Divergente' && temaElegido=='Tema 2'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirDT3" ng-show= "perfilElegido=='Divergente' && temaElegido=='Tema 3'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirDT4" ng-show= "perfilElegido=='Divergente' && temaElegido=='Tema 4'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirADT1" ng-show= "perfilElegido=='Adaptador' && temaElegido=='Tema 1'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirADT2" ng-show= "perfilElegido=='Adaptador' && temaElegido=='Tema 2'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirADT3" ng-show= "perfilElegido=='Adaptador' && temaElegido=='Tema 3'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirADT4" ng-show= "perfilElegido=='Adaptador' && temaElegido=='Tema 4'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirAST1" ng-show= "perfilElegido=='Asimilador' && temaElegido=='Tema 1'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirAST2" ng-show= "perfilElegido=='Asimilador' && temaElegido=='Tema 2'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirAST3" ng-show= "perfilElegido=='Asimilador' && temaElegido=='Tema 3'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+						<form class="form-gorup" method="post" enctype="multipart/form-data" action="/subirAST4" ng-show= "perfilElegido=='Asimilador' && temaElegido=='Tema 4'">
+							<input type="file" name="miarchivo"><br>
+							<input class="btn btn-fill" type="submit" value="Subir Archivo">
+						</form>
+
+
+                       <!--  <div ng-show="editarOk">
+
+					        <h3>¡Perfil editado correctamente!</h3><br>
+					        <button type="submit" class="btn btn-info btn-fill" onClick="history.go(0)">Volver</button>
+                            <div class="clearfix"></div>
+
+						</div> -->
+
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>

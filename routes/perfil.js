@@ -1,4 +1,4 @@
-var miAppAngular = angular.module ('navegacion', ['ngRoute']);
+var miAppAngular = angular.module ('navegacion', ['ngRoute', 'ngSanitize']);
 
 miAppAngular.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {
@@ -20,7 +20,8 @@ miAppAngular.config(['$routeProvider', function($routeProvider){
 		controller: 'ingresarUsuarioOk'
 	})
 	.when('/subirMateria', {
-		templateUrl: '/plantillas/subirMateria.html'
+		templateUrl: '/plantillas/subirMateria.html',
+		controller: 'subirMateria'
 	})
 	.when('/verMateria', {
 		templateUrl: '/plantillas/verMateria.html'

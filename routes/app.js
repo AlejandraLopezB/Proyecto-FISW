@@ -1,4 +1,4 @@
-var miAppAngular = angular.module ('navegacion', ['ngRoute']);
+var miAppAngular = angular.module ('navegacion', ['ngRoute', 'ngSanitize']);
 
 miAppAngular.config(['$routeProvider', function($routeProvider){
 	$routeProvider.when('/', {

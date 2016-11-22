@@ -12,7 +12,7 @@ miAppAngular.factory('login', function($http, $q) {
 					}
 				}, function(response) {
 					//algo salio mal
-					return $q.reject(response.data);
+					// return $q.reject(response.data);
 				});
 		}
 	};
@@ -29,7 +29,9 @@ miAppAngular.controller('ingresarOK', function($scope, $window, login, $location
 	$scope.ingresarUsuario = function(){
 		login.getUsuario($scope.id_mail)
 			.then(function(data) {
-				if(data.pass == $scope.pass){
+				if(data == null){
+					$scope.errorMail = true;
+				}else if(data.pass == $scope.pass){
 					window.localStorage['Sesion'] = angular.toJson(data);
 					//para sacar los datos
 					// accessData = window.localStorage['Sesion'];
@@ -39,15 +41,19 @@ miAppAngular.controller('ingresarOK', function($scope, $window, login, $location
 						$window.location.href = '/perfiles/profesor.html';
 					if(data.tipo == '2'){
 						if(data.perfil == 'adaptador')
-							$window.location.href = '/perfiles/adaptador.html';
+							$window.location.href = '/listaarchivosADT';
 							//$location.path('/adaptador')
 						if(data.perfil == 'asimilador')
-							$window.location.href = '/perfiles/asimilador.html';
+							$window.location.href = '/listaarchivosAST';
 						if(data.perfil == 'convergente')
-							$window.location.href = '/perfiles/convergente.html';
+							$window.location.href = '/listaarchivosCT';
 						if(data.perfil == 'divergente')
-							$window.location.href = '/perfiles/divergente.html';
+							$window.location.href = '/listaarchivosDT';
 					}
+				}else if(data.pass != $scope.pass){
+					$scope.errorPass = true;
+				}else{
+					$scope.error = true;
 				}
 			})
 	}

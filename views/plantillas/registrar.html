@@ -1,44 +1,200 @@
 <div class="container" ng-controller="registrarOK">
 
-<h1>Sign Up</h1>
+	<h2>Registrarse</h2>
 
-	<div class="col-sm-10">
+	    <div class="col-sm-10">
 
-		<form id="formulario" name="formulario" ng-submit="registrarUsuario()" novalidate ng-hide="registrarOK">
+	        <form id="formulario" name="formulario" ng-submit="validarRegistro()" novalidate ng-hide="registrarOK">
 
-			<label>Nombre</label>
-			<input type="text" name="nombre" class="form-control" ng-model="usuario.nombre" required/><br>
+	            <label>Nombre</label>
+	            <input type="text" id="name" name="nombre" class="form-control" ng-model="usuario.nombre" required/><br>
 
-			<div ng-show="!usuario.nombre && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+	            <div ng-show="!usuario.nombre && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+	            </div>
+
+	            <label>Apellido</label>
+	            <input type="text" id="apellido" name="apellido" class="form-control" ng-model="usuario.apellido" required/><br>
+
+	            <div ng-show="!usuario.apellido && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+	            </div>
+
+	            <label>Mail</label>
+	            <input type="text" id="id_mail" name="id_mail" class="form-control" ng-model="usuario.id_mail" required/><br>
+
+	            <div ng-show="!usuario.id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+	            </div>
+
+	            <label>Contraseña</label>
+	            <input type="password" id="pass" name="pass" class="form-control" ng-model="usuario.pass" required/><br>
+
+	            <div ng-show="!usuario.pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
+	            </div>
+
+	            <input ng-show="false" type="text" id="perfil" name="perfil" value="a" class="form-control" ng-model="usuario.perfil"/>
+
+	            <input class="btn btn-fill" type="submit" value="Enviar"/>
+
+	        </form>
+
+	        <div class="content">
+	        	<div class="container-fluid">
+	        		<div class="row">
+            			<div class="col-md-10">
+                			<!-- <div class="card"> -->
+
+					          	<div ng-show="registrarOK" class="well">
+
+					            	<h3>Instrucciones</h3>
+									<h5>Lea atentamente todas las indicaciones y responda acordemente, ya que con esta encuesta se obtiene un mejor resultado en el aprendizaje.</h5>
+									<h5>Ordena las cuatro opciones de cada frase según pienses que se ajustan a tu manera de aprender algo nuevo. Numera con un 4 la terminación que mejor se ajuste a tu forma de aprender y con un 1 la que peor se ajuste. Asegúrate de asignar un número a todas las terminaciones de cada una de las 12 frases. </h5><br>
+					             
+
+									<div id="pregunta"></div>
+									<div id="respuestas"></div><br>
+
+
+									<input style="visibility:visible;" id="boton2" class="btn btn-fill" value="Siguiente" onclick="comprobar()">
+
+									<form id="formularioAux" name="formularioAux" ng-submit="registrarUsuario()">
+
+										<input ng-show="false" type="text" id="name1" name="nombre1" value="ae" class="form-control" ng-model="usuario.nombre"/>
+										<input ng-show="false" type="text" id="apellido1" name="apellido1" value="aw" class="form-control" ng-model="usuario.apellido"/>
+										<input ng-show="false" type="text" id="id_mail1" name="id_mail1" value="aw" class="form-control" ng-model="usuario.id_mail"/>
+										<input ng-show="false" type="password" id="pass1" name="pass1" value="aw" class="form-control" ng-model="usuario.pass"/>
+										<input ng-show="false" type="text" id="perfil1" name="perfil" value="aw" class="form-control" ng-model="usuario.perfil"/>
+
+										<input class="btn btn-fill" style="visibility:hidden" onclick="location.href='#/iniciarSesion '" id="boton1" type="submit" value="Finalizar"/>
+									</form>
+
+								</div>
+							<!-- </div> -->
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<label>Apellido</label>
-			<input type="text" name="apellido" class="form-control" ng-model="usuario.apellido" required/><br>
 
-			<div ng-show="!usuario.apellido && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
-			</div>
 
-			<label>Mail</label>
-			<input type="text" name="id_mail" class="form-control" ng-model="usuario.id_mail" required/><br>
+    <script>
+      var preguntas = [
+      "1. Cuando aprendo...",
+      "2. Aprendo mejor cuando...",
+      "3. Cuando estoy aprendiendo...",
+      "4. Yo aprendro...",
+      "5. Cuando aprendo...",
+      "6. Cuando estoy aprendiendo...",
+      "7. Yo aprendo mejor de...",
+      "8. Cuando aprendo...",
+      "9. Aprendo mejor cuando...",
+      "10. Cuando estoy aprendiendo...",
+      "11. Cuanndo aprendo...",
+      "12. Aprendo mejor cuando..."
+      ];
+      var respuestas = [
+      ["me gusta vivir sensaciones", "me gusta pensar sobre ideas", "me gusta pensar estar haciendo cosas", "me gusta pensar observar y escuchar"],
+      ["escucho y observo cuidadosamente", "confío en el pensamiento lógico", "confío en mi intuición y sentimientos", "trabajo duro para lograr hacer las cosas"],
+      ["Tiendo a usar el razonamieto", "Soy responsable con lo que hago", "Soy callado y reservado", "Tengo fuertes sensasiones y reacciones"],
+      ["Sintiendo", "Haciendo", "Observando", "Pensando"],
+      ["Estoy abierto a nuevas experiencias", "Observo todos los aspectos del asunto", "Me gusta analizar las cosas, descomponerlas en sus partes", "Me gusta probar e intentar hacer las cosas"],
+      ["Soy una persona observadora", "Soy una persona activa", "Soy una persona intuitiva", "Soy una persona logica"],
+      ["La observacion", "La relacion con otras personas", "Las teorias racionales", "La oportunidad de probar y practicar"],
+      ["Me gusta ver el resultado de mi trabajo", "Me gustan las ideas y las teorias", "Me tomo mi tiempo antes de actuar", "Me siento personalmente involucrado en las cosas"],
+      ["Confio en mis observaciones", "Confio en mis sentimientos", "Puedo probar por mi cuenta", "Confio en mis ideas"],
+      ["Soy una persona reservada", "Soy una persona receptiva", "Soy una persona responsable", "Soy una persona racional"],
+      ["Me involucro", "Me gusta observar", "Evaluo las cosas", "Me gusta ser activo"],
+      ["Analizo ideas", "Soy receptivo y abierto", "Soy cuidadoso", "Soy practico"]
+      ];
+      var aux = 10;
+      var ec = 0;
+      var or = 0;
+      var ca = 0;
+      var ea = 0;
+      var perfil = "";
+      jugar();
+      function jugar(){
+        var txt_respuestas="";
+        txt_respuestas += '<select id="opciones1" name="opciones1">'+
+                            '<option value="1">1</option>'+
+                            '<option value="2">2</option>'+
+                            '<option value="3">3</option>'+
+                            '<option value="4">4</option>'+
+                            '</select><label>'+respuestas[aux][0]+'</label><br>';
+        txt_respuestas += '<select id="opciones2" name="opciones2">'+
+                            '<option value="1">1</option>'+
+                            '<option value="2">2</option>'+
+                            '<option value="3">3</option>'+
+                            '<option value="4">4</option>'+
+                            '</select><label>'+respuestas[aux][1]+'</label><br>';
+        txt_respuestas += '<select id="opciones3" name="opciones3">'+
+                            '<option value="1">1</option>'+
+                            '<option value="2">2</option>'+
+                            '<option value="3">3</option>'+
+                            '<option value="4">4</option>'+
+                            '</select><label>'+respuestas[aux][2]+'</label><br>';
+        txt_respuestas += '<select id="opciones4" name="opciones4">'+
+                            '<option value="1">1</option>'+
+                            '<option value="2">2</option>'+
+                            '<option value="3">3</option>'+
+                            '<option value="4">4</option>'+
+                            '</select><label>'+respuestas[aux][3]+'</label><br>';
+        
+       
+        document.getElementById("respuestas").innerHTML = txt_respuestas;
+        document.getElementById("pregunta").innerHTML = "<h5>"+preguntas[aux]+"</h5>";
+        
+      }
+      function comprobar(){
+        var ecAux = parseInt(document.getElementById("opciones1").value);
+        var orAux = parseInt(document.getElementById("opciones2").value);
+        var caAux = parseInt(document.getElementById("opciones3").value);
+        var eaAux = parseInt(document.getElementById("opciones4").value);
+      
+        if(ecAux==orAux||ecAux==caAux||ecAux==eaAux||orAux==caAux||orAux==eaAux||caAux==eaAux){
+          alert("No se pueden repetir valores");
+          jugar();
+        }
 
-			<div ng-show="!usuario.id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
-			</div>
+        else if(aux==11){
+          tipo_usuario();
+          angular.element(document.querySelector('[ng-controller="registrarOK"]')).scope().usuario.perfil=perfil;
+          document.getElementById("perfil").value = perfil;
+          alert("Encuesta exitosa, presione Finalizar"); 
+          document.getElementById("boton1").style.visibility = "visible";
+          document.getElementById("boton2").style.visibility = "hidden";
 
-			<label>Contraseña</label>
-			<input type="password" name="pass" class="form-control" ng-model="usuario.pass" required/><br>
+        }
 
-			<div ng-show="!usuario.pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
-			</div>
-
-			<input class="btn btn-fill" type="submit" value="Enviar"/>
-
-		</form>
-
-		<div ng-show="registrarOK" class="well">
-
-	        <h3>¡ Usuario {{usuario.nombre}} ingresado correctamente !</h3>
-
-		</div>
-
-	</div>
-</div>
+        else{
+          aux+=1;
+          ec+=ecAux;
+          or+=orAux;
+          ca+=caAux;
+          ea+=eaAux;
+          jugar();
+        }   
+      }
+      function tipo_usuario() {
+        var caec= (ca-ec);
+        var eaor= (ea-or);
+        if (caec < 0  && eaor < 0){
+          perfil = "convergente";
+          
+        }
+        else if(caec < 0 && eaor > 0){
+          perfil = "asimilador";
+          
+        }
+        else if(caec > 0 && eaor > 0){
+          perfil = "adaptador";
+          
+        }
+        else if(caec > 0 && eaor < 0){
+          perfil = "divergente";
+          
+        }
+        else{
+          perfil = "nada";
+          
+        }
+      }
+    </script>

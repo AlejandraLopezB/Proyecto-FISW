@@ -11,14 +11,20 @@
 
 			<div ng-show="!id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
 			</div>
+			<div ng-show="errorMail && formulario.$submitted" class="alert alert-danger">Mail incorrecto
+			</div>
 
 			<label>Contraseña</label>
 			<input type="password" name="pass" class="form-control" ng-model="pass" required/><br>
 
 			<div ng-show="!pass && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
 			</div>
+			<div ng-show="errorPass && formulario.$submitted" class="alert alert-danger">Contraseña incorrecta
+			</div>
+			<div ng-show="error" class="alert alert-danger">Contraseña incorrecta
+			</div>
 
-			<input class="btn btn-fill" type="submit" value="Enviar" />
+			<input class="btn btn-fill" type="submit" value="Enviar"/>
 
 		</form>
 
