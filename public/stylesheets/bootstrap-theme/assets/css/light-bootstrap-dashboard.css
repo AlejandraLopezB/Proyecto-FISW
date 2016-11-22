@@ -140,10 +140,10 @@ body,
 }
 
 a {
-  color: #1DC7EA;
+  color: #777777;
 }
 a:hover, a:focus {
-  color: #42d0ed;
+  color: #999999;
   text-decoration: none;
 }
 
