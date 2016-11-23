@@ -19,7 +19,7 @@
 	            </div>
 
 	            <label>Mail</label>
-	            <input type="text" id="id_mail" name="id_mail" class="form-control" ng-model="usuario.id_mail" required/><br>
+	            <input type="email" id="id_mail" name="id_mail" class="form-control" ng-model="usuario.id_mail" required/><br>
 
 	            <div ng-show="!usuario.id_mail && formulario.$submitted" class="alert alert-warning">Debes rellenar esta casilla
 	            </div>
@@ -104,7 +104,7 @@
       ["Me involucro", "Me gusta observar", "Evaluo las cosas", "Me gusta ser activo"],
       ["Analizo ideas", "Soy receptivo y abierto", "Soy cuidadoso", "Soy practico"]
       ];
-      var aux = 10;
+      var aux = 0;
       var ec = 0;
       var or = 0;
       var ca = 0;
