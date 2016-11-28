@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: basededatos
 -- ------------------------------------------------------
--- Server version	5.7.13-0ubuntu0.16.04.2
+-- Server version	5.7.16-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `USUARIOS`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `USUARIOS` (
-  `id_mail` varchar(45) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL,
-  `apellido` varchar(45) DEFAULT NULL,
-  `pass` varchar(45) DEFAULT NULL,
-  `tipo` varchar(45) DEFAULT '2',
-  `perfil` varchar(45) DEFAULT NULL,
+  `id_mail` varchar(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `apellido` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `tipo` varchar(255) NOT NULL DEFAULT '2',
+  `perfil` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=big5;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +39,7 @@ CREATE TABLE `USUARIOS` (
 
 LOCK TABLES `USUARIOS` WRITE;
 /*!40000 ALTER TABLE `USUARIOS` DISABLE KEYS */;
-INSERT INTO `USUARIOS` VALUES ('alejandra.lopez.13@sansano.usm.cl','Alejandra','Lopez Balboa','123','0','n'),('asasd@sad.com','Pepa','Perez','12334','2','convergente'),('blue@mm.com','Blue','m&m','black','2','adaptador'),('caca@caca.com','caca','caca','1234','2','asimilador'),('catherin.vargas.13@sansano.usm.cl','Catherin','Vargas','12345','0',NULL),('duck96@disney.com','doland','duck','daisy','1',NULL),('f.lopezbalboa@hotmail.com','Fernando','Lopez','12345','2','adaptador'),('francisco.alvial.13@sansano.usm.cl','Francisco','Alvial','123','2','convergente'),('hugo@disney.com','Hugo','Duck','cuack','1',NULL),('juan@hola.com','juan','perez','123','2','asimilador'),('luis@disney.com','Luis','Duck','cuack','1',NULL),('marcom.moyano.13@sansano.usm.cl','Marcom','Moyano','123','1','n'),('mickey@disney.com','mickey','mouse','minnie','0',NULL),('paco@disney.com','Paco','Duck','cuak','1',NULL),('pedro@gmail.com','pedro','pablo','123','2','convergente'),('pluto@disney.com','Pluto','El Perro','wuf','2','asimilador'),('red@mm.com','Red','m&m','green','2','divergente');
+INSERT INTO `USUARIOS` VALUES ('a@A.A','a','a','a','1',NULL),('ale@gmail.com','alejandra','lopez','123','0',NULL),('arthur@earth.com','arthur','dent','1234','2','asimilador'),('dean@alsonotdead.com','dean','winchester','cas','2','convergente'),('donald@gmail.com','donald','duck','123','1',NULL),('dumbledore@hogwarts.com','albus','dumbledore','ariana','1',NULL),('ford@space.com','ford','prefect','1234','0',NULL),('kero@clow.com','kero','el peluche','123','2','asimilador'),('marcom@gmail.com','marcom','moyano','123','2','adaptador'),('marvin@space.com','marvin','the android','1234','2','divergente'),('mickey@disney.com','mickey','mouse','123','1',NULL),('minnie@disney.com','minnie','mouse','123','1',NULL),('pacman@gmail.com','pac','man','123','1',NULL),('paula.marianjel.13@sansano.usm.cl','paula','marianjel','Aptx4869','2','convergente'),('profe@gmail.com','profesor','sadasd','123','1',NULL),('sam@notdead.com','sam','winchester','jess','1',NULL),('tricia@earth.com','tricia','mcmillan','1234','2','convergente');
 /*!40000 ALTER TABLE `USUARIOS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-11 22:02:00
+-- Dump completed on 2016-11-27  0:00:14
